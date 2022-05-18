@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/navbar.css">
 
-    <title>Not a really diverse Bank </title>
+    <title>the bank</title>
   </head>
 
   <body>
@@ -20,6 +20,9 @@
 
 <?php
     session_start();
+    if (!isset($_SESSION['name'])) {
+        header("Location: login.php");
+    }
     include 'config.php';
     $loggedin = $_SESSION['name'];
     $sql = "SELECT * FROM users WHERE name = '$loggedin'";
@@ -51,12 +54,11 @@
                     <br>
                 <?php 
                     while($row = mysqli_fetch_assoc($result)) {
-                ?>
-                    <tr>
-                        <td><a href="selecteduserdetail.php?id= <?php echo $row['id'] ;?>"> 
-                        <?php
+                      $_SESSION['id'] = $row['id'] ;
                     }
                 ?>
+                    <tr>
+                        <td><a href="selecteduserdetail.php"> 
                         <button type="button">Transact</button></a></td> 
                     </tr>
                   </div>
@@ -69,7 +71,7 @@
             </div>
       </div>
       <footer class="text-center mt-5 py-2">
-        <p>&copy 2022. Made by <b>Shane Wibowo</b> </p>
+        <p>Not a real app <b>FOR TESTING ONLY</b> </p>
       </footer>
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>

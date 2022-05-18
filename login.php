@@ -35,26 +35,23 @@ if (isset($_POST['submit'])) {
  
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
-    <link rel="stylesheet" type="text/css" href="style.css">
- 
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Login :)</title>
 </head>
 <body>
-    <div class="alert alert-warning" role="alert">
-        <?php echo $_SESSION['error']?>
-    </div>
- 
     <div class="container">
         <form action="" method="POST" class="login-email">
-            <p class="login-text" style="font-size: 2rem; font-weight: 800;">Login</p>
-            <div class="input-group">
-                <input type="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
+            <h1>Login</h1>
+            <div class="form-outline mb-4">
+                <input type="email" class="form-control" id="email" placeholder="Email" name="email" value="<?php echo $email; ?>" required>
             </div>
-            <div class="input-group">
-                <input type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
+            <div class="form-outline mb-4">
+                <input class="form-control" id="password" type="password" placeholder="Password" name="password" value="<?php echo $_POST['password']; ?>" required>
             </div>
-            <div class="input-group">
-                <button name="submit" class="btn">Login</button>
+            <div class="form-outline mb-4">
+                <button name="submit" class="btn btn-primary btn-block mb-4">Login</button>
             </div>
             <p class="login-register-text">No Account? <a href="register.php">Register</a></p>
         </form>

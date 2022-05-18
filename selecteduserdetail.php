@@ -1,9 +1,10 @@
 <?php
 include 'config.php';
+session_start();
 
 if(isset($_POST['submit']))
 {
-    $from = $_GET['id'];
+    $from = $_SESSION['id'];
     $to = $_POST['to'];
     $amount = $_POST['amount'];
     $pin = $_POST['pin'];
@@ -47,7 +48,7 @@ if(isset($_POST['submit']))
          echo "</script>";
      }
 
-    else if(pin != $pin){
+    else if($pin != $sql1['pin']){
         
         echo "<script>alert('Wrong PIN, maybe you need to relax a bit.')</script>";
         header("Refresh:0");
@@ -119,7 +120,7 @@ if(isset($_POST['submit']))
         <h2 class="text-center pt-4">Transaction</h2>
             <?php
                 include 'config.php';
-                $sid=$_GET['id'];
+                $sid=$_SESSION['id'];
                 $sql = "SELECT * FROM  users where id=$sid";
                 $result=mysqli_query($conn,$sql);
                 if(!$result)
@@ -162,7 +163,7 @@ if(isset($_POST['submit']))
                     }
                 }
 
-                $sid=$_GET['id'];
+                $sid=$_SESSION['id'];
                 $sql = "SELECT * FROM users where id!=$sid";
                 $result=mysqli_query($conn,$sql);
                 if(!$result)
